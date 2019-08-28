@@ -1,0 +1,14 @@
+.banner{
+    width:100%;
+    min-height: 75px;
+    background-color: azure;
+}
+
+.footer{
+    width:100%;
+    min-height:75px;
+    background-color: azure;
+}
+.maincontent{
+    background-color: #ccddee
+}
