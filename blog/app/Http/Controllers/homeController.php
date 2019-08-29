@@ -3,19 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
-use DB;
 
-class homeController extends Controller
+class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function index()
     {
-        $ct = DB::select('select * from categories');
-        dd($ct);
-     }
-
-    public function contact()
-    {
-        return view('contact');
+        return view('admin.dashboard');
     }
 }

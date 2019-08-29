@@ -13,6 +13,7 @@
           <li class="breadcrumb-item active">Post</li>
         </ol>
 
+            @include('admin.partial.message')
             <!-- DataTables Example -->
         <div class="card mb-3">
           <div class="card-header">
