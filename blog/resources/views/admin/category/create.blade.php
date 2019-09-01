@@ -38,7 +38,8 @@
                    <option value=0>Disable</option>
                 </select>
           </div>
-          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="submit" class="btn btn-primary btn-sm">Add</button>
+          <a href="{{ route('category.index') }}"><input type="button" name="" value="Cancel" class="btn btn-danger btn-sm"></a>
       </form>
   </div>
 </div>

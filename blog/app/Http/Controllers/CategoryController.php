@@ -20,10 +20,8 @@ class CategoryController extends Controller
     
     public function index()
     {
-        //
-
-        
-        $cats = Category::all();
+                
+        $cats = Category::orderByDesc('created_at')->get();
          //dd($cats);
 
        return view('admin.category.index', compact('cats'));
@@ -48,6 +46,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+         $request->validate([
+            'name' => 'required|min:3|string|max:50',
+        ]);
+
         $cats = new Category([
             'name' => $request->get('name'),
             'description'=> $request->get('description'),
@@ -76,7 +78,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view ('admin.category.edit', compact('category'));
     }
 
     /**
@@ -88,7 +91,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:3|max:50',
+            'description' => 'required',
+            'status' => 'boolean'
+        ]);
+
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->status = $request->status;
+        $category->save();
+          return redirect('/category')->with('success', 'Category Updated Successfully');
     }
 
     /**
@@ -99,6 +113,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return redirect('/category')->with('success', 'Category Deleted Successfully');
     }
 }

@@ -12,6 +12,8 @@
           </li>
           <li class="breadcrumb-item active">Category</li>
         </ol>
+        
+          <a href="{{ route('category.create') }} "><input type="button" name="add" value="Add Category" class="btn btn-sm btn-primary" style="margin-bottom: 10px;"></a>
 
          @include('admin.partial.message')
 
@@ -28,7 +30,7 @@
                   <tr>
                     <th>ID</th>
                     <th>name</th>
-                    <th>Status</th>
+                    <th>Status</th>                      
                     <th>Functions</th>
                   </tr>
                 </thead>               
@@ -37,9 +39,26 @@
               @foreach($cats as $item)
                   <tr>
                     <td>{{$item->id}}</td>
-                    <td>{{$item->name}}t</td>
+                    <td>{{$item->name}}</td>
                     <td>{{$item->status}}</td>
-                    <td>Edit | Delete </td>
+                    <td style="text-align: center;">
+                      <div class="row">
+                        <div class="col-md-6">
+                        <a href="{{ route('category.edit', $item->id) }}" class="btn btn-sm btn-primary ">Edit</a>
+
+                      </div>
+                      <div class="col-md-6">
+                        <form onsubmit="return confirm('Do you really want to delete?');" action="{{ route('category.destroy',$item->id) }}" method="POST" >
+                      {{ csrf_field() }}
+                      <input type="hidden" name="_method" value="DELETE" />
+                      <button type="submit" class="btn btn-danger btn-sm">Delete <i class="fa fa-trash" /></i></button>
+                      </form>
+                      </div>     
+                      </div>
+                                      
+
+
+                    </td>
                   </tr>
               @endforeach                 
                   
