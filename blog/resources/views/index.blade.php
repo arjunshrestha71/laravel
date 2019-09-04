@@ -8,7 +8,7 @@ Home Page | My First Page
 
     <div class="row">
         <div class="col-lg-6">
-          1
+            @include('heading')
          </div>
          <div class="col-lg-6">
          2

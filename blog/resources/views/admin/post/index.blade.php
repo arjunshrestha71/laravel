@@ -36,7 +36,7 @@
               @foreach($post as $item)
                   <tr>
                     <td>{{$item->id}}</td>
-                    <td>{{$item->title}}t</td>
+                    <td>{{$item->title}}</td>
                     <td>{{$item->description}}</td>
                     <td>Edit | Delete </td>
                   </tr>
