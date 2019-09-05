@@ -12,8 +12,14 @@ class FrontController extends Controller
    }
 
    public function catlist($id){
-   		$catlist = Post::where('categories_id', $id)->get();
-   		return view ('catlist', compact('catlist'));
+   		$post = Post::where('categories_id', $id)->get();
+   		return view ('catlist', compact('post'));
+
+   }
+
+   public function details($id){
+   		$details = Post::where('id', $id)->get();
+   		return view ('details', compact('details'));
 
    }
 }

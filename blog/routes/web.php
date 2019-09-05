@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/details/{id}', 'FrontController@details')->name('full.details');
 Route::get('/cats/{id}', 'FrontController@catlist');
 Route::get('/', 'FrontController@index');
 Route::get('/contact', 'homeController@contact');
